@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — BTK Media Production</title>
+<meta name="description" content="นโยบายความเป็นส่วนตัว / Privacy Policy — BTK Media Production">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header>
+  <img src="/assets/logo.png" alt="BTK Media Production logo">
+  <span class="name">BTK Media Production</span>
+  <nav><a href="/">หน้าแรก / Home</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+</header>
+<main>
+  <h1>นโยบายความเป็นส่วนตัว / Privacy Policy</h1>
+  <p class="lead">มีผลตั้งแต่ / Effective: 24 พฤศจิกายน 2569 (24 November 2026)</p>
+  <p><a href="#th">ภาษาไทย</a> · <a href="#en">English</a></p>
+
+  <section id="th">
+    <h2>ภาษาไทย</h2>
+    <h3>1. ผู้ควบคุมข้อมูล</h3>
+    <p>ห้างหุ้นส่วนจำกัด บีทีเค มีเดีย โปรดักชั่น ("ห้าง" หรือ "เรา") เป็นผู้ให้บริการระบบภายใน BTK Media System ("แอป")
+      ติดต่อเรื่องข้อมูลส่วนบุคคลได้ที่ <a href="mailto:btkmediaproduction@gmail.com">btkmediaproduction@gmail.com</a></p>
+
+    <h3>2. แอปทำอะไร</h3>
+    <p>แอปเป็นเครื่องมือภายในของห้าง ใช้ TikTok Login Kit เพื่อให้พนักงานของห้างเชื่อมต่อ<strong>บัญชี TikTok ของห้างเอง</strong>
+      และใช้ Content Posting API เพื่อโพสต์คลิปวิดีโอที่ห้างผลิตและ<strong>พนักงานอนุมัติแล้ว</strong>ลงบัญชีนั้นเท่านั้น
+      แอปไม่เปิดให้บุคคลภายนอกเชื่อมบัญชี ไม่โพสต์ลงบัญชีของผู้อื่น และไม่อ่านข้อความส่วนตัว รายชื่อผู้ติดตาม หรือข้อมูลของผู้ใช้ TikTok คนอื่น</p>
+
+    <h3>3. ข้อมูลที่เราเก็บ</h3>
+    <table>
+      <tr><th>ข้อมูล</th><th>ได้มาจาก</th><th>ใช้เพื่อ</th></tr>
+      <tr><td>ตัวระบุบัญชี TikTok ของห้าง (open_id), ชื่อที่แสดง และรูปโปรไฟล์</td><td>TikTok Login Kit (scope <code>user.info.basic</code>)</td><td>แสดงว่าเชื่อมกับบัญชีใด และตรวจว่าเป็นบัญชีของห้าง</td></tr>
+      <tr><td>Access token และ refresh token</td><td>TikTok OAuth</td><td>เรียก Content Posting API แทนบัญชีของห้าง</td></tr>
+      <tr><td>รหัสการโพสต์ (publish_id), สถานะการโพสต์ และลิงก์คลิป</td><td>Content Posting API (scope <code>video.upload</code> / <code>video.publish</code>)</td><td>ตรวจว่าโพสต์สำเร็จ และไม่โพสต์ซ้ำ</td></tr>
+      <tr><td>ไฟล์คลิป แคปชัน และบันทึกการอนุมัติ</td><td>ห้างผลิตเอง</td><td>ผลิตและโพสต์คลิป เก็บหลักฐานว่าใครอนุมัติเมื่อใด</td></tr>
+      <tr><td>บัญชีผู้ใช้ของพนักงาน (ชื่อ อีเมลงาน บทบาท)</td><td>ห้างสร้างให้</td><td>ควบคุมสิทธิ์เข้าใช้งานและบันทึกการทำงาน</td></tr>
+    </table>
+    <p>เราไม่เก็บรหัสผ่าน TikTok ไม่เก็บข้อมูลของผู้ชมหรือผู้ติดตาม และไม่ใช้ข้อมูลจาก TikTok เพื่อโฆษณา ขาย หรือส่งต่อให้บุคคลอื่น</p>
+
+    <h3>4. การเก็บรักษาและความปลอดภัย</h3>
+    <ul>
+      <li>Token ถูกเข้ารหัส (Fernet/AES) ก่อนบันทึกลงฐานข้อมูล คีย์เข้ารหัสเก็บแยกในค่าตั้งของเซิร์ฟเวอร์ ไม่อยู่ในซอร์สโค้ด</li>
+      <li>ฐานข้อมูลและไฟล์คลิปเก็บบนผู้ให้บริการคลาวด์ที่ห้างใช้ (ฐานข้อมูล Postgres และที่เก็บไฟล์แบบ S3) เข้าถึงได้เฉพาะพนักงานที่ได้รับสิทธิ์</li>
+      <li>ทุกการเปลี่ยนสถานะคลิปและการโพสต์ถูกบันทึกใน audit log</li>
+    </ul>
+
+    <h3>5. ระยะเวลาเก็บ</h3>
+    <ul>
+      <li>Token: เก็บเท่าที่บัญชียังเชื่อมต่ออยู่ ลบทันทีเมื่อยกเลิกการเชื่อมต่อ</li>
+      <li>ข้อมูลโปรไฟล์บัญชีของห้าง: เก็บเท่าที่บัญชียังเชื่อมต่อ</li>
+      <li>บันทึกการโพสต์และการอนุมัติ: เก็บตามระยะเวลาที่กฎหมายบัญชีและภาษีกำหนด เพราะใช้คำนวณรายได้ค่าคอมมิชชัน</li>
+    </ul>
+
+    <h3>6. การลบข้อมูล</h3>
+    <ul>
+      <li>ยกเลิกสิทธิ์ของแอปได้ทุกเมื่อในแอป TikTok: <em>Settings and privacy → Security → Manage app permissions</em> แล้วลบ BTK Media System
+        เมื่อสิทธิ์ถูกยกเลิก token เดิมจะใช้ไม่ได้ และแอปจะลบ token ที่เก็บไว้</li>
+      <li>ขอให้ลบข้อมูลที่เกี่ยวกับบัญชี TikTok ได้ทางอีเมล <a href="mailto:btkmediaproduction@gmail.com">btkmediaproduction@gmail.com</a>
+        เราจะลบภายใน 30 วัน ยกเว้นข้อมูลที่กฎหมายบังคับให้เก็บ (ซึ่งจะลบเมื่อพ้นระยะเวลาดังกล่าว)</li>
+    </ul>
+
+    <h3>7. สิทธิ์ของเจ้าของข้อมูล</h3>
+    <p>ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) ท่านมีสิทธิ์ขอเข้าถึง ขอสำเนา แก้ไข ลบ คัดค้าน หรือถอนความยินยอม
+      โดยติดต่อทางอีเมลข้างต้น</p>
+
+    <h3>8. การเปลี่ยนแปลงนโยบาย</h3>
+    <p>หากมีการแก้ไข เราจะปรับวันที่มีผลบังคับใช้ในหน้านี้</p>
+  </section>
+
+  <section id="en">
+    <h2>English</h2>
+    <h3>1. Who we are</h3>
+    <p>BTK Media Production Limited Partnership ("BTK", "we") operates BTK Media System (the "App"), an internal tool.
+      Contact us about personal data at <a href="mailto:btkmediaproduction@gmail.com">btkmediaproduction@gmail.com</a>.</p>
+
+    <h3>2. What the App does</h3>
+    <p>The App uses TikTok Login Kit so our staff can connect <strong>the company's own TikTok account</strong>, and the Content Posting API to publish
+      videos that we produce and that <strong>a member of staff has approved</strong> to that account only.
+      The App does not let the public connect accounts, never posts to anyone else's account, and does not read private messages, follower lists or other TikTok users' data.</p>
+
+    <h3>3. Data we collect</h3>
+    <table>
+      <tr><th>Data</th><th>Source</th><th>Purpose</th></tr>
+      <tr><td>The company account's TikTok identifier (open_id), display name and avatar</td><td>TikTok Login Kit (<code>user.info.basic</code> scope)</td><td>Show which account is connected and confirm it is ours</td></tr>
+      <tr><td>Access token and refresh token</td><td>TikTok OAuth</td><td>Call the Content Posting API on behalf of the company account</td></tr>
+      <tr><td>Publish IDs, post status and video links</td><td>Content Posting API (<code>video.upload</code> / <code>video.publish</code> scopes)</td><td>Confirm a post succeeded and prevent duplicate posts</td></tr>
+      <tr><td>Video files, captions and approval records</td><td>Produced by us</td><td>Produce and post videos; keep a record of who approved each one and when</td></tr>
+      <tr><td>Staff user accounts (name, work email, role)</td><td>Created by us</td><td>Access control and activity logging</td></tr>
+    </table>
+    <p>We do not store TikTok passwords, do not collect data about viewers or followers, and do not use TikTok data for advertising, sell it or share it with third parties.</p>
+
+    <h3>4. Storage and security</h3>
+    <ul>
+      <li>Tokens are encrypted (Fernet/AES) before they are stored. The encryption key is kept in server configuration, not in source code.</li>
+      <li>The database and video files are stored with the cloud providers we use (a Postgres database and S3-compatible file storage), accessible only to authorised staff.</li>
+      <li>Every status change and post is recorded in an audit log.</li>
+    </ul>
+
+    <h3>5. Retention</h3>
+    <ul>
+      <li>Tokens: kept only while the account is connected; deleted as soon as it is disconnected.</li>
+      <li>Company account profile data: kept only while the account is connected.</li>
+      <li>Post and approval records: kept for the period required by Thai accounting and tax law, because they are used to account for commission income.</li>
+    </ul>
+
+    <h3>6. Deleting your data</h3>
+    <ul>
+      <li>You can revoke the App's access at any time in the TikTok app: <em>Settings and privacy → Security → Manage app permissions</em>, then remove BTK Media System.
+        Revoked tokens stop working and the App deletes the stored tokens.</li>
+      <li>To request deletion of data related to a TikTok account, email <a href="mailto:btkmediaproduction@gmail.com">btkmediaproduction@gmail.com</a>.
+        We delete it within 30 days, except data we are legally required to keep (deleted when that period ends).</li>
+    </ul>
+
+    <h3>7. Your rights</h3>
+    <p>Under Thailand's Personal Data Protection Act B.E. 2562 (PDPA) you may request access to, a copy of, correction or deletion of your data, object to processing, or withdraw consent by emailing us.</p>
+
+    <h3>8. Changes</h3>
+    <p>If we change this policy we will update the effective date on this page.</p>
+  </section>
+</main>
+<footer>© 2026 ห้างหุ้นส่วนจำกัด บีทีเค มีเดีย โปรดักชั่น (BTK Media Production Limited Partnership) · <a href="mailto:btkmediaproduction@gmail.com">btkmediaproduction@gmail.com</a></footer>
+</body>
+</html>
