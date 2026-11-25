@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TikTok Login — BTK Media Production</title>
+<script>
+// TikTok Login Kit redirect URI for the BTK Media System (internal tool).
+// Hands code + state to the BTK API running on this same computer, which checks the
+// state (CSRF) and exchanges the code for tokens server-side. This page keeps nothing:
+// no storage, no logging, no third-party scripts, and the query is removed from the
+// address bar and history before leaving. The target is fixed (never taken from the URL).
+(function () {
+  var TARGET = "http://localhost:8000/auth/tiktok/callback";
+  var KEYS = ["code", "state", "scopes", "error", "error_description"];
+  var src = new URLSearchParams(window.location.search);
+  var out = new URLSearchParams();
+  for (var i = 0; i < KEYS.length; i++) {
+    var value = src.get(KEYS[i]);
+    if (value !== null) out.set(KEYS[i], value);
+  }
+  window.history.replaceState(null, "", window.location.pathname);
+  if (out.get("state")) {
+    window.location.replace(TARGET + "?" + out.toString());
+  } else {
+    window.__btkNoState = true;
+  }
+})();
+</script>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header>
+  <img src="/assets/logo.png" alt="BTK Media Production logo">
+  <span class="name">BTK Media Production</span>
+</header>
+<main>
+  <h1>กำลังกลับไปที่ระบบ BTK…</h1>
+  <p class="lead">Returning to the BTK Media System on this computer…</p>
+  <div class="card" id="nostate" hidden>
+    <p>หน้านี้ใช้รับผลการล็อกอิน TikTok ของระบบภายในห้างเท่านั้น — เริ่มเชื่อมบัญชีจากหน้า "บัญชีช่องทาง" ในระบบ</p>
+    <p>This page only receives TikTok login results for BTK's internal system. Start from the system's channel accounts page.</p>
+  </div>
+  <noscript><div class="card"><p>ต้องเปิด JavaScript เพื่อกลับไปที่ระบบ / JavaScript is required.</p></div></noscript>
+</main>
+<script>
+  if (window.__btkNoState) document.getElementById("nostate").hidden = false;
+</script>
+</body>
+</html>
